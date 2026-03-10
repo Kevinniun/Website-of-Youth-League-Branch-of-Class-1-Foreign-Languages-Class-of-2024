@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>云听初心·一大会址 - 2024级外文1班第一团支部</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>2024级外文1班第一团支部活动记录</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="activities.html">活动记录</a></li>
+        <li><a href="exhibition.html">虚拟展厅</a></li>
+        <li><a href="cloud-voice.html" class="active">云听初心</a></li>
+        <li><a href="about.html">关于我们</a></li>
+      </ul>
+    </nav>
+<style>
+
+/* 页面整体 */
+body{
+    margin:0;
+    font-family: "Microsoft YaHei", sans-serif;
+    background:#f5f5f5;
+    text-align:center;
+}
+
+/* 标题 */
+header{
+    background:#b30000;
+    color:white;
+    padding:20px;
+}
+
+/* 页面主体 */
+.voice-container{
+    padding:40px 20px;
+}
+
+/* 一大会址图片 */
+.site-image img{
+    width:70%;
+    max-width:700px;
+    border-radius:12px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.2);
+}
+
+/* 语音按钮区域 */
+.voice-list{
+    margin-top:40px;
+}
+
+/* 语音按钮 */
+.voice-btn{
+    padding:12px 22px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    background:#b30000;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+/* hover效果 */
+.voice-btn:hover{
+    background:#800000;
+}
+
+/* 四个part横排 */
+.parts{
+    margin:20px 0;
+}
+
+/* 播放器 */
+#voice-player{
+    margin-top:30px;
+    width:60%;
+    max-width:500px;
+}
+
+/* 当前播放高亮 */
+.voice-btn.active{
+    background:#ff4d4d;
+}
+
+</style>
+  </header>
+
+
+<body>
+
+<header>
+<h1>云听初心·一大会址</h1>
+</header>
+
+
+<main class="voice-container">
+
+<!-- 一大会址图片 -->
+<div class="site-image">
+<img src="assets/images/cloud-voice/site.jpg" alt="中共一大会址">
+</div>
+
+<p>中共一大会址（2020年11月3日摄）。新华社记者 刘颖 摄</p>
+
+<!-- 语音按钮 -->
+<section class="voice-list">
+
+<button class="voice-btn" data-audio="Prologue_Hall.mp3">
+Prologue Hall
+</button>
+
+<div class="parts">
+<button class="voice-btn" data-audio="Part1.m4a">Part I</button>
+<button class="voice-btn" data-audio="Part2.mp3">Part II</button>
+<button class="voice-btn" data-audio="Part3.m4a">Part III</button>
+<button class="voice-btn" data-audio="Part4.m4a">Part IV</button>
+</div>
+
+<button class="voice-btn" data-audio="Conclusion.m4a">
+Conclusion
+</button>
+
+</section>
+
+<audio id="voice-player" controls></audio>
+
+</main>
+
+
+<script>
+
+const buttons=document.querySelectorAll(".voice-btn");
+const player=document.getElementById("voice-player");
+
+buttons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+buttons.forEach(b=>b.classList.remove("active"));
+
+const file=btn.dataset.audio;
+
+player.src="assets/sounds/"+file;
+
+player.play();
+
+btn.classList.add("active");
+
+});
+
+});
+
+player.addEventListener("ended",()=>{
+buttons.forEach(b=>b.classList.remove("active"));
+});
+
+</script>
+
+  <footer>
+    <p>© 2025 2024级外文1班第一团支部</p>
+  </footer>
+</body>
+</html>
